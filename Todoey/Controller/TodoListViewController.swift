@@ -15,7 +15,7 @@ class TodoListViewController: UITableViewController {
     
     var selectedCategory: Category?{
         didSet{
-            loadItems()
+            //loadItems()
         }
     }
     
@@ -95,12 +95,12 @@ class TodoListViewController: UITableViewController {
             //when user press the add button
             //print(textField.text!)
             
-            let newItem = Item(context: self.context)
-            newItem.title = textField.text!
-            newItem.done = false
-            newItem.parentCategory = self.selectedCategory
+//            let newItem = Item(context: self.context)
+//            newItem.title = textField.text!
+//            newItem.done = false
+//            newItem.parentCategory = self.selectedCategory
+//            self.itemArray.append(newItem)
             
-            self.itemArray.append(newItem)
             self.saveItems()
             //            self.defaults.set(self.itemArray, forKey: "TodoListItemArray")
         }
@@ -124,22 +124,23 @@ class TodoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), prediacte: NSPredicate? = nil){
-        
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        if let additionalPredicate = prediacte{
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-        }else{
-            request.predicate = categoryPredicate
-        }
-
-        do{
-            itemArray = try context.fetch(request)
-        } catch{
-            print("Error fetching data from context \(error)")
-        }
-    }
+//    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), prediacte: NSPredicate? = nil){
+//
+//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+//
+//        if let additionalPredicate = prediacte{
+//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+//        }else{
+//            request.predicate = categoryPredicate
+//        }
+//
+//        do{
+//            itemArray = try context.fetch(request)
+//        } catch{
+//            print("Error fetching data from context \(error)")
+//        }
+//        tableView.reloadData()
+//    }
 }
 
 //MARK: - Search Bar Methods
