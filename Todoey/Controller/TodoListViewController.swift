@@ -144,33 +144,33 @@ class TodoListViewController: UITableViewController {
 
 //MARK: - Search Bar Methods
 
-extension TodoListViewController: UISearchBarDelegate{
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        print(searchBar.text!)
-        
-//        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+//extension TodoListViewController: UISearchBarDelegate{
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        let request: NSFetchRequest<Item> = Item.fetchRequest()
+//        print(searchBar.text!)
+//
+////        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+////
+////        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//
+//        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
 //
 //        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-//        tableView.reloadData()
-        loadItems(with: request, prediacte: predicate)
-        self.tableView.reloadData() 
-        print("...")
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0{
-            loadItems()
-            tableView.reloadData()
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-        }
-    }
-}
+//
+////        tableView.reloadData()
+//        loadItems(with: request, prediacte: predicate)
+//        self.tableView.reloadData()
+//        print("...")
+//    }
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text?.count == 0{
+//            loadItems()
+//            tableView.reloadData()
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//        }
+//    }
+//}
